@@ -5,7 +5,7 @@ using System.Text;
 
 namespace H2_Lesson2_BooksNBorrowers
 {
-    internal class Book
+    public class Book
     {
         private string _title;
         private string _author;
