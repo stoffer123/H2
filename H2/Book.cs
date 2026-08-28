@@ -79,6 +79,10 @@ namespace H2_Lesson2_BooksNBorrowers
 
         public void Return()
         {
+            if(!IsOnLoan)
+            {
+                throw new InvalidOperationException("Bogen er ikke udlånt");
+            }
             IsOnLoan = false;
         }
 
