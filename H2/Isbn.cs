@@ -4,7 +4,7 @@ using System.Text;
 
 namespace H2_Lesson2_BooksNBorrowers
 {
-    internal struct Isbn
+    public struct Isbn : IEquatable<Isbn>
     {
         private readonly string _value;
 
@@ -28,8 +28,26 @@ namespace H2_Lesson2_BooksNBorrowers
             _value = value;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Isbn isbn && Equals(isbn);
+        }
+
+        public bool Equals(Isbn other)
+        {
+            return _value == other._value;
+        }
+
+        public override int GetHashCode()
+        {
+            return _value.GetHashCode();
+        }
+
         public override string ToString() => _value;
+
         public static implicit operator string(Isbn isbn) => isbn._value;
         public static implicit operator Isbn(string value) => new Isbn(value);
+        public static bool operator ==(Isbn left, Isbn right) => left.Equals(right);
+        public static bool operator !=(Isbn left, Isbn right) => !left.Equals(right);
     }
 }
