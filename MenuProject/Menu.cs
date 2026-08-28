@@ -51,7 +51,30 @@ namespace MenuProject
                 else
                 {
                     Console.WriteLine("Ugyldigt valg! Prøv igen.");
-                    Thread.Sleep(2000);
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Console.Write("\r"); // Gå til start af linje
+
+                        // Grønne blokke
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        for (int j = 0; j <= i; j++)
+                        {
+                            Console.Write("█");
+                        }
+
+                        // Røde blokke
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        for (int j = i + 1; j < 10; j++)
+                        {
+                            Console.Write("█");
+                        }
+
+                        Console.ResetColor();
+                        Thread.Sleep(200);
+                    }
+
+                    Console.WriteLine();
                 }
             }
         }
