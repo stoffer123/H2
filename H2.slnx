@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="H2/H2_Lesson2_BooksNBorrowers.csproj" />
+  <Project Path="H2_Lesson3_Library/H2_Lesson3_Library.csproj" />
+  <Project Path="MenuProject/MenuProject.csproj" />
 </Solution>
