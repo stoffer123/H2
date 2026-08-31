@@ -10,7 +10,7 @@ namespace H2_Lesson3_Library
     {
         private readonly Library _library;
 
-        public LibraryMenuFactory(Library library)
+        internal LibraryMenuFactory(Library library)
         {
             _library = library;
         }

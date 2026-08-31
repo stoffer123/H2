@@ -5,16 +5,16 @@ using System.Text;
 
 namespace H2_Lesson3_Library
 {
-    public class Library
+    internal class Library
     {
-        public List<Book> Books { get; private set; } = new();
+        internal List<Book> Books { get; private set; } = new();
 
 
         /// <summary>
         /// Set borrowed status true on a book
         /// </summary>
         /// <param name="isbn"></param>
-        public void BorrowBook(Isbn isbn)
+        internal void BorrowBook(Isbn isbn)
         {
             Book? book = Books.FirstOrDefault(b => b.Isbn == isbn);
 
@@ -26,7 +26,7 @@ namespace H2_Lesson3_Library
             book.Checkout();
         }
 
-        public void ReturnBook(Isbn isbn)
+        internal void ReturnBook(Isbn isbn)
         {
             Book? book = Books.FirstOrDefault(b => b.Isbn == isbn);
 
@@ -43,7 +43,7 @@ namespace H2_Lesson3_Library
         /// </summary>
         /// <param name="title"></param>
         /// <returns><see cref="IReadOnlyList{T}"/> af <see cref="Book"/></returns>
-        public IReadOnlyList<Book> FindBook(string title)
+        internal IReadOnlyList<Book> FindBook(string title)
         {
             if (string.IsNullOrEmpty(title))
             {
@@ -57,7 +57,7 @@ namespace H2_Lesson3_Library
         /// Laver et <see cref="Library"/> seeded med test-data
         /// </summary>
         /// <returns><see cref="Library"/></returns>
-        public static Library CreateWithTestData()
+        internal static Library CreateWithTestData()
         {
             Library library = new();
 
