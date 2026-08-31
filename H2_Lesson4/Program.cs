@@ -4,6 +4,16 @@
     {
         static void Main(string[] args)
         {
+            /*Svar på opgave
+                I Program cs kalder vi Description og calculate salary på alle "employees"
+                men adfærd er forskellig fra salaried og hourly.
+                
+                Hvis vi fjernede override og virtual så ville vi bare få baseklassens output.
+                da vi kalder metoden på "Employee" Hvis vi derimod typecastede () til salaried eller hourly
+                inden udskrift ville vi få det "rigtige" svar.
+             
+            */
+
             List<Employee> Employees = new()
             {
                 new SalariedEmployee("Lars Larsen", "1234", new DateTime(1992, 6, 23), 22000m, 500m),
