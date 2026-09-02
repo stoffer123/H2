@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- Faar compileren til at advare, hvis en public metode mangler XML-dokumentation. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Bilerne fra lektion 6 genbruges som den ene af de to testtyper. -->
+    <ProjectReference Include="..\H2_Lesson6\H2_Lesson6.csproj" />
+  </ItemGroup>
+
+</Project>
