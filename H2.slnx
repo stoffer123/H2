@@ -5,5 +5,6 @@
   <Project Path="H2_Lesson5/H2_Lesson5.csproj" Id="5c52e489-b35f-40bc-9ea3-d8465294b92b" />
   <Project Path="H2_Lesson6/H2_Lesson6.csproj" Id="67e06a43-ad26-4146-8e2c-917e9dd60862" />
   <Project Path="H2_Lesson7/H2_Lesson7.csproj" Id="bb27d9a7-27cb-4fdd-b08c-00c1a26baa8e" />
+  <Project Path="H2_Lesson9/H2_Lesson9.csproj" Id="ca203492-4560-4f05-bea2-63f22ce606f1" />
   <Project Path="MenuProject/MenuProject.csproj" />
 </Solution>
