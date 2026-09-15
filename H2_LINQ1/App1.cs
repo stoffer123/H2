@@ -73,7 +73,7 @@ namespace H2_LINQ1
 
             // Kompiler til rigtig kørbar kode når vil eksekvere den:
             Func<ICatalogueItem, bool> compiled = expensiveFilter.Compile();
-            var rereer = catalogue.Where(compiled);
+            var rereer = catalogue.AsQueryable().Where(compiled);
             bool expressresult = compiled(catalogue[0]);
 
 

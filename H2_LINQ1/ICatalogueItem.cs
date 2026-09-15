@@ -9,6 +9,7 @@ namespace H2_LINQ1
         string Name { get; set; }
         Category Category { get; set; }
         Price Price { get; set; }
-        
+        Tag Tag { get; set; }
+
     }
 }

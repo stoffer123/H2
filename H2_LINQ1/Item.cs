@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Text;
 
 namespace H2_LINQ1
@@ -9,7 +10,7 @@ namespace H2_LINQ1
         public string Name { get; set; } = "";
         public Category Category { get; set; }
         public Price Price { get; set; }
-
+        public Tag Tag { get; set; }
 
         public override string ToString()
         {
