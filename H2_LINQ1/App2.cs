@@ -230,8 +230,7 @@ namespace H2_LINQ1
             //a. Find alle tags fra alle produkter (fladet ud til individuelle tags, inkl. duplikater)
             Console.WriteLine("Alle tags fra alle produkter");
             var alleTags = catalogue
-                .SelectMany(i => Enum.GetValues<Tag>()
-                    .Where(t => t != Tag.None && i.Tag.HasFlag(t)));
+                .SelectMany(i => i.Tags);
             foreach (var tag in alleTags)
             {
                 Console.WriteLine(tag);
@@ -248,9 +247,9 @@ namespace H2_LINQ1
             Console.WriteLine();
 
             //c. Find alle produkter, der har et bestemt tag
-            Tag efterspurgtTag = Tag.Gaming;
+            string efterspurgtTag = "Gaming";
             Console.WriteLine($"Produkter med tag: {efterspurgtTag}");
-            var produkterMedTag = catalogue.Where(i => i.Tag.HasFlag(efterspurgtTag));
+            var produkterMedTag = catalogue.Where(i => i.Tags.Any(t => t.Name == efterspurgtTag));
             PrintList(produkterMedTag.ToList());
             Console.WriteLine();
 
@@ -314,8 +313,7 @@ namespace H2_LINQ1
             //=== Tags ===
             Console.WriteLine("=== Tags ===");
             var alleTags = catalogue
-                .SelectMany(i => Enum.GetValues<Tag>()
-                    .Where(t => t != Tag.None && i.Tag.HasFlag(t)));
+                .SelectMany(i => i.Tags);
             var unikkeTags = alleTags.Distinct();
 
             Console.WriteLine("Alle forskellige tags:");
@@ -329,8 +327,7 @@ namespace H2_LINQ1
             //Select tags på produkter over 5000dkk
             Console.WriteLine("Tags på produkter over 5.000 kr.:");
             var tagsOver5000 = over5000
-                .SelectMany(i => Enum.GetValues<Tag>()
-                    .Where(t => t != Tag.None && i.Tag.HasFlag(t)))
+                .SelectMany(i => i.Tags)
                 .Distinct();
             foreach (var tag in tagsOver5000)
             {
@@ -348,92 +345,97 @@ namespace H2_LINQ1
 
         private List<ICatalogueItem> GetTestCatalogue()
         {
+            //Hvert tag oprettes EEN gang og genbruges, saa Distinct() kan genkende dem
+            var gaming = new Tag { Name = "Gaming" };
+            var laptop = new Tag { Name = "Laptop" };
+            var highPerformance = new Tag { Name = "HighPerformance" };
+
             return
            [
                new Item()
-        {
-            Name = "Gaming Laptop",
-            Category = Category.Computer,
-            Price = new Price(12500m),
-            Tag = Tag.Gaming | Tag.Laptop | Tag.HighPerformance
-        },
-        new Item()
-        {
-            Name = "Office Laptop",
-            Category = Category.Computer,
-            Price = new Price(7500m),
-            Tag = Tag.Laptop
-        },
-        new Item()
-        {
-            Name = "Gaming Mus",
-            Category = Category.Accessory,
-            Price = new Price(650m),
-            Tag = Tag.Gaming
-        },
-        new Item()
-        {
-            Name = "Keyboard",
-            Category = Category.Computer,
-            Price = new Price(1100m),
-            Tag = Tag.Gaming
-        },
-        new Item()
-        {
-            Name = "4k Skærm",
-            Category = Category.Monitor,
-            Price = new Price(4500m),
-            Tag = Tag.HighPerformance
-        },
-        new Item()
-        {
-            Name = "Gaming Headset",
-            Category = Category.Accessory,
-            Price = new Price(1500m),
-            Tag = Tag.Gaming
-        },
-        new Item()
-        {
-            Name = "27\" Gaming Skærm",
-            Category = Category.Monitor,
-            Price = new Price(3500m),
-            Tag = Tag.Gaming | Tag.HighPerformance
-        },
-        new Item()
-        {
-            Name = "USB-C Dock",
-            Category = Category.Accessory,
-            Price = new Price(1800m),
-            Tag = Tag.None
-        },
-        new Item()
-        {
-            Name = "Macbook Air",
-            Category = Category.Computer,
-            Price = new Price(9500m),
-            Tag = Tag.Laptop | Tag.HighPerformance
-        },
-        new Item()
-        {
-            Name = "Gaming PC",
-            Category = Category.Computer,
-            Price = new Price(15000m),
-            Tag = Tag.Gaming | Tag.HighPerformance
-        },
-        new Item()
-        {
-            Name = "Webkamera",
-            Category = Category.Accessory,
-            Price = new Price(850m),
-            Tag = Tag.None
-        },
-        new Item()
-        {
-            Name = "32\" 4K Skærm",
-            Category = Category.Monitor,
-            Price = new Price(5500m),
-            Tag = Tag.HighPerformance
-        }
+                {
+                    Name = "Gaming Laptop",
+                    Category = Category.Computer,
+                    Price = new Price(12500m),
+                    Tags = [gaming, laptop, highPerformance]
+                },
+                new Item()
+                {
+                    Name = "Office Laptop",
+                    Category = Category.Computer,
+                    Price = new Price(7500m),
+                    Tags = [laptop]
+                },
+                new Item()
+                {
+                    Name = "Gaming Mus",
+                    Category = Category.Accessory,
+                    Price = new Price(650m),
+                    Tags = [gaming]
+                },
+                new Item()
+                {
+                    Name = "Keyboard",
+                    Category = Category.Computer,
+                    Price = new Price(1100m),
+                    Tags = [gaming]
+                },
+                new Item()
+                {
+                    Name = "4k Skærm",
+                    Category = Category.Monitor,
+                    Price = new Price(4500m),
+                    Tags = [highPerformance]
+                },
+                new Item()
+                {
+                    Name = "Gaming Headset",
+                    Category = Category.Accessory,
+                    Price = new Price(1500m),
+                    Tags = [gaming]
+                },
+                new Item()
+                {
+                    Name = "27\" Gaming Skærm",
+                    Category = Category.Monitor,
+                    Price = new Price(3500m),
+                    Tags = [gaming, highPerformance]
+                },
+                new Item()
+                {
+                    Name = "USB-C Dock",
+                    Category = Category.Accessory,
+                    Price = new Price(1800m),
+                    Tags = []
+                },
+                new Item()
+                {
+                    Name = "Macbook Air",
+                    Category = Category.Computer,
+                    Price = new Price(9500m),
+                    Tags = [laptop, highPerformance]
+                },
+                new Item()
+                {
+                    Name = "Gaming PC",
+                    Category = Category.Computer,
+                    Price = new Price(15000m),
+                    Tags = [gaming, highPerformance]
+                },
+                new Item()
+                {
+                    Name = "Webkamera",
+                    Category = Category.Accessory,
+                    Price = new Price(850m),
+                    Tags = []
+                },
+                new Item()
+                {
+                    Name = "32\" 4K Skærm",
+                    Category = Category.Monitor,
+                    Price = new Price(5500m),
+                    Tags = [highPerformance]
+                }
            ];
         }
     }
