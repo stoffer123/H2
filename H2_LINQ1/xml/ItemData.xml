@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Item>
+    <Name>Gaming Laptop</Name>
+    <Category>Computer</Category>
+    <Price>12500</Price>
+  </Item>
+  <Item>
+    <Name>Office Laptop</Name>
+    <Category>Computer</Category>
+    <Price>7500</Price>
+  </Item>
+  <Item>
+    <Name>Gaming Mus</Name>
+    <Category>Tilbehør</Category>
+    <Price>650</Price>
+  </Item>
+  <Item>
+    <Name>Keyboard</Name>
+    <Category>Tilbehør</Category>
+    <Price>1100</Price>
+  </Item>
+  <Item>
+    <Name>4K Skærm</Name>
+    <Category>Skærm</Category>
+    <Price>4500</Price>
+  </Item>
+  <Item>
+    <Name>Gaming Headset</Name>
+    <Category>Tilbehør</Category>
+    <Price>1500</Price>
+  </Item>
+  <Item>
+    <Name>27" Gaming Skærm</Name>
+    <Category>Skærm</Category>
+    <Price>3500</Price>
+  </Item>
+  <Item>
+    <Name>USB-C Dock</Name>
+    <Category>Tilbehør</Category>
+    <Price>1800</Price>
+  </Item>
+  <Item>
+    <Name>MacBook Air</Name>
+    <Category>Computer</Category>
+    <Price>9500</Price>
+  </Item>
+  <Item>
+    <Name>Gaming PC</Name>
+    <Category>Computer</Category>
+    <Price>15000</Price>
+  </Item>
+  <Item>
+    <Name>Webkamera</Name>
+    <Category>Tilbehør</Category>
+    <Price>850</Price>
+  </Item>
+  <Item>
+    <Name>32" 4K Skærm</Name>
+    <Category>Skærm</Category>
+    <Price>5500</Price>
+  </Item>
+</Items>

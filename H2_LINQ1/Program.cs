@@ -10,8 +10,11 @@
             //IApplication app2 = new App2();
             //app2.Run();
 
-            IApplication app3 = new App3();
-            app3.Run();
+            //IApplication app3 = new App3();
+            //app3.Run();
+
+            IApplication app4 = new App4();
+            app4.Run();
         }
     }
 }
